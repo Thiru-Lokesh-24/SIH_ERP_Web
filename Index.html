@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart ERP Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <h1>🌟 Smart ERP Dashboard</h1>
+    <p>All-in-one platform for Students & Teachers</p>
+  </header><hr>
+
+  <!-- NAVIGATION BAR -->
+  <nav>
+    <button class="active-btn" onclick="showSection('dashboard', event)">Dashboard</button>
+    <button onclick="showSection('search', event)">Search</button>
+    <button onclick="showSection('notifications', event)">Notifications</button>
+    <button onclick="showSection('events', event)">Events</button>
+    <button onclick="showSection('feedback', event)">Feedback</button>
+    <button onclick="showSection('chat', event)">Chat/Forum</button>
+    <button onclick="showSection('career', event)">Career Tools</button>
+    <button onclick="showSection('portfolios', event)">Portfolios</button>
+    <button onclick="showSection('clubs', event)">Clubs & Societies</button>
+    <button onclick="showSection('registration', event)">Event Registration</button>
+    <button onclick="showSection('Login', event)">Login</button>
+  </nav><hr>
+  
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="card active">
+      <h2>📊 Dashboard</h2>
+      <p>Welcome! Quick links to all features.</p>
+      <ul>
+        <li>🔔 Check your <b>Notifications</b></li>
+        <li>📅 View upcoming <b>Events</b></li>
+        <li>✏ Give <b>Feedback</b> to improve</li>
+        <li>💬 Join <b>Discussions</b> in Chat</li>
+      </ul>
+    </section>
+
+    <!-- Search & Filtering -->
+    <section id="search" class="card">
+      <h2>🔍 Search</h2>
+      <input type="text" id="search-input" placeholder="Enter name, department, year..." onkeyup="searchPeople()">
+      <ul id="search-results"></ul>
+    </section>
+
+    <!-- Notifications -->
+    <section id="notifications" class="card">
+      <h2>📢 Notifications & Announcements</h2>
+      <ul id="notification-list"></ul>
+    </section>
+
+    <!-- Events & Calendar -->
+    <section id="events" class="card">
+      <h2>📅 Events & Calendar</h2>
+      <ul id="event-list"></ul>
+    </section>
+
+    <!-- Feedback -->
+    <section id="feedback" class="card">
+      <h2>✏ Feedback System</h2>
+      <textarea id="feedback-text" placeholder="Write your feedback here"></textarea>
+      <button onclick="submitFeedback()">Submit Feedback</button>
+      <ul id="feedback-list"></ul>
+    </section>
+
+    <!-- Chat/Forum -->
+    <section id="chat" class="card">
+      <h2>💬 Chat / Forum</h2>
+      <input type="text" id="chat-input" placeholder="Type a message">
+      <button onclick="sendChat()">Send</button>
+      <ul id="chat-list"></ul>
+    </section>
+
+    <!-- Career Tools -->
+    <section id="career" class="card">
+      <h2>🎯 Career Tools</h2>
+      <h3>📄 Resume Templates</h3>
+      <ul id="resume-list"></ul>
+      <h3>💼 Internship Listings</h3>
+      <ul id="internship-list"></ul>
+    </section>
+
+    <!-- Student Portfolios -->
+    <section id="portfolios" class="card">
+      <h2>🖼 Student Portfolios</h2>
+      <ul id="portfolio-list"></ul>
+    </section>
+
+    <!-- Clubs & Societies -->
+    <section id="clubs" class="card">
+      <h2>🏛 Clubs & Societies Portal</h2>
+      <ul id="club-list"></ul>
+    </section>
+
+    <!-- Event Registration -->
+    <section id="registration" class="card">
+      <h2>📝 Event Registration</h2>
+      <input type="text" id="event-name" placeholder="Event Name">
+      <input type="text" id="participant-name" placeholder="Your Name">
+      <button onclick="registerEvent()">Register</button>
+      <ul id="registration-list"></ul>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Smart ERP | Built by Students 🚀 | <a href="https://www.instagram.com/thiru_lokeshwaran/" >Instagram</a></p>
+  </footer>
+
+  <!-- JS FILES -->
+  <script src="script.js"></script>
+</body>
+</html>
