@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart ERP Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+      .social-icons {
+        color :dimgray;
+        transition: colour 0.3s;
+        text-decoration: none;
+      }
+      .social-icons:hover{
+        color:black;
+      }
+    </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <h1>🌟 Smart ERP Dashboard</h1>
+    <p>All-in-one platform for Students & Teachers</p>
+  </header><hr>
+
+  <!-- NAVIGATION BAR -->
+  <nav>
+    <button class="active-btn" onclick="showSection('dashboard', event)">Dashboard</button>
+    <button onclick="showSection('search', event)">Search</button>
+    <button onclick="showSection('notifications', event)">Notifications</button>
+    <button onclick="showSection('events', event)">Events</button>
+    <button onclick="showSection('feedback', event)">Feedback</button>
+    <button onclick="showSection('chat', event)">Chat/Forum</button>
+    <button onclick="showSection('career', event)">Career Tools</button>
+    <button onclick="showSection('portfolios', event)">Portfolios</button>
+    <button onclick="showSection('clubs', event)">Clubs & Societies</button>
+    <button onclick="showSection('registration', event)">Event Registration</button>
+    <button onclick="showSection('Login', event)">Login</button>
+  </nav><br>
+  
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="card active">
+      <h2>📊 Dashboard</h2>
+      <p>Welcome! Quick links to all features.</p>
+      <ul>
+        <li>🔔 Check your <b>Notifications</b></li>
+        <li>📅 View upcoming <b>Events</b></li>
+        <li>✏ Give <b>Feedback</b> to improve</li>
+        <li>💬 Join <b>Discussions</b> in Chat</li>
+      </ul>
+    </section>
+
+    <!-- Search & Filtering -->
+    <section id="search" class="card">
+      <h2>🔍 Search</h2>
+      <input type="text" id="search-input" placeholder="Enter name, department, year..." onkeyup="searchPeople()">
+      <ul id="search-results"></ul>
+    </section>
+
+    <!-- Notifications -->
+    <section id="notifications" class="card">
+      <h2>📢 Notifications & Announcements</h2>
+      <ul id="notification-list"></ul>
+    </section>
+
+    <!-- Events & Calendar -->
+    <section id="events" class="card">
+      <h2>📅 Events & Calendar</h2>
+      <ul id="event-list"></ul>
+    </section>
+
+    <!-- Feedback -->
+    <section id="feedback" class="card">
+      <h2>✏ Feedback System</h2>
+      <textarea id="feedback-text" placeholder="Write your feedback here"></textarea>
+      <button onclick="submitFeedback()">Submit Feedback</button>
+      <ul id="feedback-list"></ul>
+    </section>
+
+    <!-- Chat/Forum -->
+    <section id="chat" class="card">
+      <h2>💬 Chat / Forum</h2>
+      <input type="text" id="chat-input" placeholder="Type a message">
+      <button onclick="sendChat()">Send</button>
+      <ul id="chat-list"></ul>
+    </section>
+
+    <!-- Career Tools -->
+    <section id="career" class="card">
+      <h2>🎯 Career Tools</h2>
+      <h3>📄 Resume Templates</h3>
+      <ul id="resume-list"></ul>
+      <h3>💼 Internship Listings</h3>
+      <ul id="internship-list"></ul>
+    </section>
+
+    <!-- Student Portfolios -->
+    <section id="portfolios" class="card">
+      <h2>🖼 Student Portfolios</h2>
+      <ul id="portfolio-list"></ul>
+    </section>
+
+    <!-- Clubs & Societies -->
+    <section id="clubs" class="card">
+      <h2>🏛 Clubs & Societies Portal</h2>
+      <ul id="club-list"></ul>
+    </section>
+
+    <!-- Event Registration -->
+    <section id="registration" class="card">
+      <h2>📝 Event Registration</h2>
+      <input type="text" id="event-name" placeholder="Event Name">
+      <input type="text" id="participant-name" placeholder="Your Name">
+      <button onclick="registerEvent()">Register</button>
+      <ul id="registration-list"></ul>
+    </section>
+
+        <!-- Login Section -->
+    <section id="Login" class="card">
+      <h2>🔑 Login</h2>
+      <div class="input-box">
+        <input type="email" id="login-email" placeholder="Email" required>
+      </div>
+      <div class="input-box">
+        <input type="password" id="login-password" placeholder="Password" required>
+      </div>
+      <button onclick="loginUser()">Login</button>
+      <p class="toggle-link">Don't have an account? <a href="#" onclick="toggleAuth('register')">Register</a></p>
+    </section>
+
+    <!-- Register Section -->
+    <section id="Register" class="card">
+      <h2>📝 Register</h2>
+      <div class="input-box">
+        <input type="text" id="reg-name" placeholder="Full Name" required>
+      </div>
+      <div class="input-box">
+        <input type="email" id="reg-email" placeholder="Email" required>
+      </div>
+      <div class="input-box">
+        <input type="password" id="reg-password" placeholder="Password" required>
+      </div>
+      <button onclick="registerUser()">Register</button>
+      <p class="toggle-link">Already have an account? <a href="#" onclick="toggleAuth('login')">Login</a></p>
+    </section>
+    <!-- Payment Form -->
+    <div id="payment">
+      <h3>Make a Payment</h3>
+      <input type="text" id="payer-name" placeholder="Enter your name">
+      <input type="email" id="payer-email" placeholder="Enter your email">
+      <input type="number" id="payment-amount" placeholder="Enter amount">
+  
+     <select id="payment-method">
+        <option value="">Select method</option>
+       <option value="upi">UPI</option>
+       <option value="card">Card</option>
+       <option value="netbanking">Net Banking</option>
+      </select>
+
+      <button onclick="processPayment()">Pay Now</button>
+    </div>
+
+    <!-- Receipt Box -->
+    <div id="receipt" style="display: none;">
+     <h3>Payment Receipt</h3>
+     <p>Name: <span id="r-name"></span></p>
+     <p>Email: <span id="r-email"></span></p>
+     <p>Amount: <span id="r-amount"></span></p>
+     <p>Method: <span id="r-method"></span></p>
+     <p>Date: <span id="r-date"></span></p>
+  
+     <button onclick="window.print()">Print Receipt</button>
+    </div>
+    <div id="attendance">
+      <h3>Student Attendance</h3>
+      <input type="text" id="student-name" placeholder="Enter your name">
+       <button onclick="viewAttendance()">View Attendance</button>
+    </div>
+
+    <!-- Attendance Record -->
+    <div id="attendance-record" style="display: none; margin-top:20px;">
+     <h3>Attendance Record</h3>
+      <p>Name: <span id="a-name"></span></p>
+      <p>Days Present: <span id="a-days"></span></p>
+      <p>Current Streak: <span id="a-streak"></span> 🔥</p>
+      <p>Last Marked: <span id="a-last"></span></p>
+    </div>
+
+   </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <p>© 2025 Smart ERP | Built by Students  | <a class="social-icons" href="https://www.instagram.com/thiru_lokeshwaran/" ><ion-icon name="logo-instagram"></ion-icon></a><a class="social-icons" href="https://www.youtube.com/watch?v=neOasLBWoy0&list=RDneOasLBWoy0&start_radio=1"><ion-icon name="logo-youtube"></ion-icon></a></p>
+  </footer>
+
+  <!-- JS FILES -->
+  <script src="script.js"></script>
+</body>
+</html>
